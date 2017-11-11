@@ -1,6 +1,6 @@
-# BitfinexLendingBot Overview
+# WilsonLendingBot Overview
 
-BitfinexLendingBot (BLB) is a bot written in Go for automatic swap lending on the [Bitfinex](https://www.bitfinex.com/?refcode=7zVc3vSAbR) exchange. It works with all supported currencies (USD, BTC, LTC), is headless, does not require database setups and has unit testing for the lending strategies.
+WilsonLendingBot (WLB) is a bot written in Go for automatic swap lending on the [Bitfinex](https://www.bitfinex.com/?refcode=7zVc3vSAbR) exchange. It works with all supported currencies (USD, BTC, LTC), is headless, does not require database setups and has unit testing for the lending strategies.
 
 If you still don't have an account with [Bitfinex](https://www.bitfinex.com/?refcode=7zVc3vSAbR), please use referrer code **7zVc3vSAbR**, that way you will get a discount on your lending fees and will support the continued development of this project.
 
@@ -12,17 +12,17 @@ If you still don't have an account with [Bitfinex](https://www.bitfinex.com/?ref
  * (Optional) [glide](https://github.com/Masterminds/glide)
  * (Optional) Access to Crontab
 
-1. Download or clone the main project and extract files to `BitfinexLendingBot` directory.
+1. Download or clone the main project and extract files to `WilsonLendingBot` directory.
 
 2. Download dependencies
 
     If using [glide](https://github.com/Masterminds/glide):
 
-        cd BitfinexLendingBot/ && glide in && glide update
+        cd WilsonLendingBot/ && glide in && glide update
 
  Alternatively, with go get:
 
-        cd BitfinexLendingBot/ && go get -u github.com/eAndrius/bitfinex-go
+        cd WilsonLendingBot/ && go get -u github.com/eAndrius/bitfinex-go
 
 3. Compile bot (in `BitfinexLendingBot` directory)
 
@@ -34,7 +34,7 @@ If you still don't have an account with [Bitfinex](https://www.bitfinex.com/?ref
 
 5. Run the bot and observe output. **Note:** no actual offers will be placed with `--dryrun` option.
 
-        ./BitfinexLendingBot --updatelends --dryrun
+        ./WilsonLendingBot --updatelends --dryrun
 
 
 ## Flags
@@ -43,38 +43,38 @@ If you still don't have an account with [Bitfinex](https://www.bitfinex.com/?ref
 
     Example:
 
-        ./BitfinexLendingBot --conf=good_strategy.conf
+        ./WilsonLendingBot --conf=good_strategy.conf
 
 * `--updatelends` Instruct Bot to update lend offerings based on the strategy in configuration file.
 
     Example:
 
-        ./BitfinexLendingBot --updatelends
+        ./WilsonLendingBot --updatelends
 
 * `--dryrun` Output strategy decisions without placing actual lends on the exchange.
 
     Example:
 
-        ./BitfinexLendingBot --updatelends --dryrun
+        ./WilsonLendingBot --updatelends --dryrun
 
 * `--logtofile` Append Bot log to a file `blb.log` instead of stdout.
 
     Example:
 
-        ./BitfinexLendingBot --updatelends --logtofile
+        ./WilsonLendingBot --updatelends --logtofile
 
 ## Scheduling
 
 To run the Bot every 10 minutes with cron (`$ crontab -e`) use:
 
 ```
-*/10 * * * * lockrun -n /tmp/blb.lock BitfinexLendingBot --updatelends --logtofile
+*/10 * * * * lockrun -n /tmp/blb.lock WilsonLendingBot --updatelends --logtofile
 ```
 
 Alternatively, to run in GNU Screen or similar use:
 
 ```bash
-while [[ 1 ]]; do timeout 30s BitfinexLendingBot --updatelends --logtofile; sleep 10m; done
+while [[ 1 ]]; do timeout 30s WilsonLendingBot --updatelends --logtofile; sleep 10m; done
 ```
 
 # Configuration
